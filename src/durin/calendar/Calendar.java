@@ -22,9 +22,26 @@ public class Calendar {
 
 	public static void main(String[] args) {
 
-		System.out.println("반복횟수를 입력하세요.");
 		Scanner sc = new Scanner(System.in);
+		Calendar cal = new Calendar();
+
+		
+		System.out.println("반복횟수를 입력하세요.");
 		int repeat = sc.nextInt();
+
+		for(int i = 0; i<repeat; i++){
+			System.out.println("달을 입력해");
+			int month = sc.nextInt();
+			System.out.printf("%d월은 %d일까지 있습니다.\n",month, cal.maxDaysOfMonth(month));
+		}
+		
+		
+		
+		
+		
+		
+		
+/*		int repeat = sc.nextInt();
 
 		Calendar cal = new Calendar();
 		// cal.printSampleCode();
@@ -32,15 +49,15 @@ public class Calendar {
 		int[] arr = new int[repeat];
 
 		System.out.println("월을 입 력하세요");
-
 		for (int i = 0; i < repeat; i++) {
 			arr[i] = sc.nextInt();
 		}
-
 		for (int i = 0; i < arr.length; i++) {
 			int maxDay = cal.maxDaysOfMonth(arr[i]);
 			System.out.printf("%d월은 %d일까지 입니다\n", arr[i], maxDay);
 		}
+		
+		*/
+		
 	}
-
 }
