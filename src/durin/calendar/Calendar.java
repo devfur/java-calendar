@@ -7,9 +7,16 @@ public class Calendar {
 	private final int[] MAX_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 	public int maxDaysOfMonth(int month) {
-
 		return MAX_DAYS[month - 1];
 	}
+	
+	/**
+	 * 월을 입력하면 해당월의 달력을 출력한다
+	 * 달력의 모양은 1단계에서 작성한 모양으로 만든다
+	 * 1일은 일요일로 정해도 무방하다
+	 * -1을 입력받기 전까지 반복입력반든다
+	 * -프롬프트 출력
+	 */
 
 	public void printSampleCode() {
 		System.out.println("일   월   화   수   목   금   토");
@@ -23,7 +30,46 @@ public class Calendar {
 	public static void main(String[] args) {
 
 		
-		String prompt = "cal> ";
+		
+		for(;;){
+		
+		System.out.println("\n월을 입력하세요");
+		Scanner sc = new Scanner(System.in);
+		int month = sc.nextInt();
+		
+		if(month==-1){
+			break;
+		}
+		
+		Calendar cal = new Calendar();
+		int maxDay = cal.maxDaysOfMonth(month);
+		
+		System.out.println("일 월 화 수 목 금 토");
+		System.out.println("---------------");
+		for(int i = 1; i<=maxDay; i++){
+		System.out.print(i+" ");
+		if((i%7)==0){
+		System.out.println();	
+		}
+		
+		}
+		
+		}
+		System.out.println("Bye~");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	/*	String prompt = "cal> ";
 		Scanner sc = new Scanner(System.in);
 		Calendar cal = new Calendar();
 
@@ -46,7 +92,7 @@ public class Calendar {
 			System.out.printf("%d월은 %d일까지 있습니다.\n",month, cal.maxDaysOfMonth(month));
 		}
 		System.out.println("Bye~");
-		sc.close();
+		sc.close();*/
 		
 		
 /*		int repeat = sc.nextInt();
