@@ -50,16 +50,16 @@ public class Prompt {
 			System.out.println("달을 입력해");
 			System.out.print("MONTH> ");
 			month = sc.nextInt();
-			System.out.println("첫번째 요일을 입력(su, mo, tu, we, th, fr, sa");
-			String str_weekday = sc.next();
-			weekday = parseDay(str_weekday);
+//			System.out.println("첫번째 요일을 입력(su, mo, tu, we, th, fr, sa");
+//			String str_weekday = sc.next();
+//			weekday = parseDay(str_weekday);
 			
 			if (month > 12 || month < 1) {
 				System.out.println("잘못된 입력입니다.");
 				continue;
 			}
 
-			cal.printCalendar(year, month, weekday);
+			cal.printCalendar(year, month);
 
 		}
 		System.out.println("Bye~");
@@ -67,10 +67,8 @@ public class Prompt {
 	}
 
 	public static void main(String[] args) {
-
 		// 셀 실행
 		Prompt p = new Prompt();
 		p.runPrompt();
-
 	}
 }
