@@ -27,51 +27,40 @@ public class Calendar {
 	 * 입력받기 전까지 반복입력반든다 -프롬프트 출력
 	 */
 
-	public void printCalendar(int year, int month, String day) {
+	public void printCalendar(int year, int month, int weekday) {
 		System.out.printf("     <<%4d년%3d월>>\n", year, month);
 		System.out.println("    일    월    화   수    목    금    토");
 		System.out.println("---------------------");
 
+		
+		//print blank space
+		for(int i = 0; i < weekday; i++){
+			System.out.print("   ");
+		}
+		
 		int maxDay = maxDaysOfMonth(year, month);
-		int[] days = new int[31];
 
-		for (int i = 1; i <= maxDay; i++) {
-			days[i - 1] = i;
-		}
-
-		int how = 0;
-		if ("MO".equals(day)) {
-			how = 1;
-		} else if (("TU").equals(day)) {
-			how = 2;
-		} else if (("WE").equals(day)) {
-			how = 3;
-		} else if (("TH").equals(day)) {
-			how = 4;
-		} else if (("FR").equals(day)) {
-			how = 5;
-		}
-
-		for (int k = 1; k <= how; k++) {
-			System.out.printf("%3s", "-");
-		}
-
-		int cnt=how;
-		for (int j = 0; j < maxDay; j++) {
-			System.out.printf("%3d", days[j]);
-			cnt++;
-			if (j < 7-how && j > 0 && j % (6 - how) == 0) {
-				System.out.println();
-			}
-			else if(j >0 && cnt%7==0){
-				System.out.println();
-			}
-			
-			
-
+		
+		int count = 7 -weekday;
+		int delim = (count < 7) ? count : 0;
+		
+		//print first line
+		for(int i = 1; i <= count; i++){
+			System.out.printf("%3d", i);
 		}
 
 		System.out.println();
-	}
+		
+		//print from second line to last
+		count++;
+		for (int i = count; i <=maxDay; i++) {
+			System.out.printf("%3d", i);
+			if(i%7==delim){
+				System.out.println();
+			}
+		}
 
+		System.out.println();
+		System.out.println();
+	}
 }
