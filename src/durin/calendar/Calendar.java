@@ -1,10 +1,38 @@
 package durin.calendar;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class Calendar {
 
 	private final int[] MAX_DAYS = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	private final int[] LEAP_MAX_DAYS = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
+	private HashMap<Date, String> planMap;
+
+	public Calendar(){
+		planMap = new HashMap<Date, String>();
+	}
+	
+	/**
+	 * 
+	 * @param date ex:"2017-06-20""
+	 * @param plan
+	 * @throws ParseException 
+	 */
+	public void registerPlan(String strDate, String plan) throws ParseException{
+		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
+		planMap.put(date, plan);
+	}
+	
+	public String searchPlan(String strDate) throws ParseException{
+		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
+		String plan = planMap.get(date); 
+		return plan;
+	}
+	
 	public boolean isLeapYear(int year) {
 
 		if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
@@ -90,12 +118,15 @@ public class Calendar {
 	}
 	
 	//simple test code here
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		Calendar c = new Calendar();
 		c.getWeekDay(1970, 1, 1);
 		c.getWeekDay(1971, 5, 1);
 		c.getWeekDay(1972, 5, 1);
 		c.getWeekDay(1973, 5, 1);
+		
+		c.registerPlan("2017-06-23", "Let's eat beef!");
+//		System.out.println(c.searchPlan("2017-06-23").equals("Let's eat beef!"));
 	}
 	
 	
