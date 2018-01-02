@@ -26,8 +26,12 @@ public class Prompt {
 			if (month > 12) {
 				continue;
 			}
-
-			cal.printCalendar(year, month);
+			
+			System.out.println("첫번째 요일을 입력");
+			String day = sc.next();
+			
+			
+			cal.printCalendar(year, month, day);
 			
 		}
 		System.out.println("Bye~");

@@ -27,78 +27,51 @@ public class Calendar {
 	 * 입력받기 전까지 반복입력반든다 -프롬프트 출력
 	 */
 
-	public void printCalendar(int year, int month) {
+	public void printCalendar(int year, int month, String day) {
 		System.out.printf("     <<%4d년%3d월>>\n", year, month);
 		System.out.println("    일    월    화   수    목    금    토");
 		System.out.println("---------------------");
 
 		int maxDay = maxDaysOfMonth(year, month);
+		int[] days = new int[31];
 
 		for (int i = 1; i <= maxDay; i++) {
-			System.out.printf("%3d", i);
-			if (i % 7 == 0) {
+			days[i - 1] = i;
+		}
+
+		int how = 0;
+		if ("MO".equals(day)) {
+			how = 1;
+		} else if (("TU").equals(day)) {
+			how = 2;
+		} else if (("WE").equals(day)) {
+			how = 3;
+		} else if (("TH").equals(day)) {
+			how = 4;
+		} else if (("FR").equals(day)) {
+			how = 5;
+		}
+
+		for (int k = 1; k <= how; k++) {
+			System.out.printf("%3s", "-");
+		}
+
+		int cnt=how;
+		for (int j = 0; j < maxDay; j++) {
+			System.out.printf("%3d", days[j]);
+			cnt++;
+			if (j < 7-how && j > 0 && j % (6 - how) == 0) {
 				System.out.println();
 			}
+			else if(j >0 && cnt%7==0){
+				System.out.println();
+			}
+			
+			
+
 		}
+
 		System.out.println();
-		// System.out.println(" 1 2 3 4 5 6 7");
-		// System.out.println(" 8 9 10 11 12 13 14");
-		// System.out.println("15 16 17 18 19 20 21");
-		// System.out.println("22 23 24 25 26 27 28");
 	}
-
-	/*
-	 * public static void main(String[] args) {
-	 * 
-	 * 
-	 * 
-	 * for(;;){
-	 * 
-	 * System.out.println("\n월을 입력하세요"); Scanner sc = new Scanner(System.in);
-	 * int month = sc.nextInt();
-	 * 
-	 * if(month==-1){ break; }
-	 * 
-	 * Calendar cal = new Calendar(); int maxDay = cal.maxDaysOfMonth(month);
-	 * 
-	 * System.out.println("일 월 화 수 목 금 토");
-	 * System.out.println("---------------"); for(int i = 1; i<=maxDay; i++){
-	 * System.out.print(i+" "); if((i%7)==0){ System.out.println(); }
-	 * 
-	 * }
-	 * 
-	 * } System.out.println("Bye~");
-	 * 
-	 */
-
-	/*
-	 * String prompt = "cal> "; Scanner sc = new Scanner(System.in); Calendar
-	 * cal = new Calendar();
-	 * 
-	 * 
-	 * System.out.println("반복횟수를 입력하세요.");
-	 * 
-	 * int repeat = sc.nextInt();
-	 * 
-	 * for(int i = 0; i<repeat; i++){ System.out.println("달을 입력해");
-	 * System.out.print(prompt); int month = sc.nextInt(); if(month == -1){
-	 * break; } else if(month > 12){ System.out.println("1~12월범위"); continue; }
-	 * System.out.printf("%d월은 %d일까지 있습니다.\n",month, cal.maxDaysOfMonth(month));
-	 * } System.out.println("Bye~"); sc.close();
-	 */
-
-	/*
-	 * int repeat = sc.nextInt();
-	 * 
-	 * Calendar cal = new Calendar(); // cal.printSampleCode();
-	 * 
-	 * int[] arr = new int[repeat];
-	 * 
-	 * System.out.println("월을 입 력하세요"); for (int i = 0; i < repeat; i++) {
-	 * arr[i] = sc.nextInt(); } for (int i = 0; i < arr.length; i++) { int
-	 * maxDay = cal.maxDaysOfMonth(arr[i]);
-	 * System.out.printf("%d월은 %d일까지 입니다\n", arr[i], maxDay); }
-	 * 
-	 */
 
 }
